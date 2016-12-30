@@ -1,7 +1,9 @@
 #include "SceneGraph\SceneNode.h"
+#include "GraphicsManager.h"
 
 SceneNode::SceneNode() :
-parentNode(nullptr)
+parentNode(nullptr),
+ID(-1)
 {
 	childNodes.clear();
 }
@@ -26,6 +28,7 @@ bool SceneNode::DetachParent()
 
 	// Parent node points to nothing
 	parentNode = nullptr;
+	return true;
 }
 
 bool SceneNode::DetachChild(SceneNode* theChild)
@@ -57,6 +60,7 @@ bool SceneNode::AddParent(SceneNode* theParent)
 
 	// Parent node points to the assigned parent
 	parentNode = theParent;
+	return true;
 }
 
 bool SceneNode::AddChild(SceneNode* theChild)
@@ -125,4 +129,34 @@ bool SceneNode::DeleteAllChildren()
 		(*lt) = nullptr;
 	}
 	return true;
+}
+
+// Update the Scene Graph
+void SceneNode::Update(double _dt)
+{
+	// Update the children
+	list<SceneNode*>::iterator it;
+	for (it = childNodes.begin(); it != childNodes.end(); ++it)
+	{
+		(*it)->Update(_dt);
+	}
+}
+// Render the Scene Graph
+void SceneNode::Render(void)
+{
+	MS& modelStack = GraphicsManager::GetInstance()->GetModelStack();
+	modelStack.PushMatrix();
+
+	modelStack.MultMatrix(this->GetTransformMatrix());
+	// Render the entity
+	Render();
+
+	// Render the children
+	list<SceneNode*>::iterator it;
+	for (it = childNodes.begin(); it != childNodes.end(); ++it)
+	{
+		(*it)->Render();
+	}
+
+	modelStack.PopMatrix();
 }

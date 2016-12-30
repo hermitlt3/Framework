@@ -2,7 +2,7 @@
 #include "SceneGraph\SceneNode.h"
 
 SceneGraph::SceneGraph() :
-IDGenerator(-1)
+IDGenerator(0)
 {
 
 }
@@ -10,4 +10,14 @@ IDGenerator(-1)
 SceneGraph::~SceneGraph()
 {
 
+}
+
+void SceneGraph::Destroy()
+{
+	if (theRoot)
+	{
+		theRoot->DeleteAllChildren();
+		delete theRoot;
+	}
+	Singleton<SceneGraph>::Destroy();
 }

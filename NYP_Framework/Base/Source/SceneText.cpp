@@ -86,7 +86,7 @@ void SceneText::Init()
 	lights[0] = new Light();
 	GraphicsManager::GetInstance()->AddLight("lights[0]", lights[0]);
 	lights[0]->type = Light::LIGHT_DIRECTIONAL;
-	lights[0]->position.Set(0, 20, 0);
+	lights[0]->position.Set(0, 5, 0);
 	lights[0]->color.Set(1, 1, 1);
 	lights[0]->power = 1;
 	lights[0]->kC = 1.f;
@@ -251,7 +251,7 @@ void SceneText::Update(double dt)
 	// Update the player position and other details based on keyboard and mouse inputs
 
 
-	//camera.Update(dt); // Can put the camera into an entity rather than here (Then we don't have to write this)
+	camera.Update(dt); // Can put the camera into an entity rather than here (Then we don't have to write this)
 
 	GraphicsManager::GetInstance()->UpdateLights(dt);
 
@@ -293,13 +293,6 @@ void SceneText::Exit()
 {
 	// Detach camera from other entities
 	GraphicsManager::GetInstance()->DetachCamera();
-
-
-
-
-
-
-
 
 	// Delete the lights
 	delete lights[0];
