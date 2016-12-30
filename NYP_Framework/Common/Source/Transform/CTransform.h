@@ -1,13 +1,13 @@
 #ifndef CTRANSFORM_H_
 #define CTRANSFORM_H_
-#include "Mtx44.h"
-#include "Vector3.h"
+#include "../Mtx44.h"
+#include "../Vector3.h"
 
 class CTransform
 {
 public:
 	CTransform();
-	~CTransform();
+	virtual ~CTransform();
 
 	inline void SetTranslate(const float& x, const float& y, const float& z) {
 		Mtx44 tempMtx;

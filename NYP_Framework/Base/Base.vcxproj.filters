@@ -13,14 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="SkyBox">
-      <UniqueIdentifier>{37a125cd-b9e3-4b31-923e-1226145f54a1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SceneGraph">
       <UniqueIdentifier>{ef26c3e9-48ba-4d35-8ef9-c759feb0ca2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Transform">
-      <UniqueIdentifier>{8d77e909-3bc6-4d82-9d32-473de89bb40b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,9 +45,6 @@
     <ClCompile Include="Source\Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SkyBox\SkyBoxEntity.cpp">
-      <Filter>SkyBox</Filter>
-    </ClCompile>
     <ClCompile Include="Source\EntityManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,9 +56,6 @@
     </ClCompile>
     <ClCompile Include="Source\SceneNode.cpp">
       <Filter>SceneGraph</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\CTransform.cpp">
-      <Filter>Transform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,17 +83,11 @@
     <ClInclude Include="Source\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SkyBox\SkyBoxEntity.h">
-      <Filter>SkyBox</Filter>
-    </ClInclude>
     <ClInclude Include="Source\EntityManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\GenericEntity.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\CTransform.h">
-      <Filter>Transform</Filter>
     </ClInclude>
     <ClInclude Include="Source\SceneGraph\SceneGraph.h">
       <Filter>SceneGraph</Filter>

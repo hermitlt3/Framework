@@ -2,8 +2,9 @@
 #define ENTITY_BASE_H
 
 #include "Vector3.h"
+#include "Transform\CTransform.h"
 
-class EntityBase
+class EntityBase : public CTransform
 {
 public:
 	EntityBase();
@@ -12,12 +13,6 @@ public:
 	virtual void Update(double _dt);
 	virtual void Render();
 	virtual void RenderUI();
-
-	inline void SetPosition(const Vector3& _value){ position = _value; };
-	inline Vector3 GetPosition(){ return position; };
-
-	inline void SetScale(const Vector3& _value){ scale = _value; };
-	inline Vector3 GetScale(){ return scale; };
 
 	bool IsDone();
 	void SetIsDone(const bool _value);
@@ -28,9 +23,6 @@ public:
 	virtual void SetCollider(const bool _value);
 
 protected:
-	Vector3 position;
-	Vector3 scale;
-
 	bool isDone;
 	bool m_bCollider;
 };

@@ -29,6 +29,7 @@
     <ClCompile Include="Source\SceneManager.cpp" />
     <ClCompile Include="Source\ShaderProgram.cpp" />
     <ClCompile Include="Source\timer.cpp" />
+    <ClCompile Include="Source\Transform\CTransform.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\Vector2.cpp" />
     <ClCompile Include="Source\Vector3.cpp" />
@@ -57,6 +58,7 @@
     <ClInclude Include="Source\ShaderProgram.h" />
     <ClInclude Include="Source\SingletonTemplate.h" />
     <ClInclude Include="Source\timer.h" />
+    <ClInclude Include="Source\Transform\CTransform.h" />
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vector2.h" />
     <ClInclude Include="Source\Vector3.h" />

@@ -12,6 +12,9 @@
     <Filter Include="Collider">
       <UniqueIdentifier>{512a2aec-0fb3-4599-86d8-e551c7edff75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Transform">
+      <UniqueIdentifier>{ba7e4d31-69a1-483d-b5c3-5117935f1b23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\MatrixStack.cpp">
@@ -79,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="Source\Mesh.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Transform\CTransform.cpp">
+      <Filter>Transform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +168,9 @@
     </ClInclude>
     <ClInclude Include="Source\Mesh.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Transform\CTransform.h">
+      <Filter>Transform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

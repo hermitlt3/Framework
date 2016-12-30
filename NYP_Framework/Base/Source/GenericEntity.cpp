@@ -22,8 +22,6 @@ void GenericEntity::Render()
 {
 	MS& modelStack = GraphicsManager::GetInstance()->GetModelStack();
 	modelStack.PushMatrix();
-	modelStack.Translate(position.x, position.y, position.z);
-	modelStack.Scale(scale.x, scale.y, scale.z);
 	RenderHelper::RenderMesh(modelMesh);
 	modelStack.PopMatrix();
 }
@@ -44,8 +42,6 @@ GenericEntity* Create::Entity(	const std::string& _meshName,
 		return nullptr;
 
 	GenericEntity* result = new GenericEntity(modelMesh);
-	result->SetPosition(_position);
-	result->SetScale(_scale);
 	result->SetCollider(false);
 	EntityManager::GetInstance()->AddEntity(result);
 	return result;
