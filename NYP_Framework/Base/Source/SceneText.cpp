@@ -111,8 +111,6 @@ void SceneText::Init()
 	
 	// Create the playerinfo instance, which manages all information about the player
 
-
-
 	// Create and attach the camera to the scene
 	camera.Init(Vector3(0, 0, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
@@ -164,10 +162,10 @@ void SceneText::Init()
 //	Create::Text3DObject("text", Vector3(0.0f, 0.0f, 0.0f), "DM2210", Vector3(10.0f, 10.0f, 10.0f), Color(0, 1, 1));
 	Create::Sprite2DObject("crosshair", Vector3(0.0f, 0.0f, 0.0f), Vector3(10.0f, 10.0f, 10.0f));
 
-	SkyBoxEntity* theSkyBox = Create::SkyBox("SKYBOX_FRONT", "SKYBOX_BACK",
+	/*SkyBoxEntity* theSkyBox = Create::SkyBox("SKYBOX_FRONT", "SKYBOX_BACK",
 											 "SKYBOX_LEFT", "SKYBOX_RIGHT",
 											 "SKYBOX_TOP", "SKYBOX_BOTTOM");
-
+	*/
 	// Customise the ground entity
 	groundEntity->SetPosition(Vector3(0, -10, 0));
 	groundEntity->SetScale(Vector3(100.0f, 100.0f, 100.0f));
@@ -279,7 +277,7 @@ void SceneText::Render()
 	GraphicsManager::GetInstance()->UpdateLightUniforms();
 
 	// Setup 3D pipeline then render 3D
-	//GraphicsManager::GetInstance()->SetPerspectiveProjection(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
+	GraphicsManager::GetInstance()->SetPerspectiveProjection(45.0f, 4.0f / 3.0f, 0.1f, 10000.0f);
 	GraphicsManager::GetInstance()->AttachCamera(&camera);
 	EntityManager::GetInstance()->Render();
 
