@@ -1,11 +1,23 @@
 #include "SceneGraph\SceneNode.h"
+#include "SceneGraph\SceneGraph.h"
 #include "GraphicsManager.h"
+#include "EntityManager.h"
+#include "MeshBuilder.h"
+#include "RenderHelper.h"
 
 SceneNode::SceneNode() :
 parentNode(nullptr),
 ID(-1)
 {
 	childNodes.clear();
+}
+
+SceneNode::SceneNode(Mesh* _mesh) :
+parentNode(nullptr),
+ID(-1)
+{
+	childNodes.clear();
+	nodeMesh = _mesh;
 }
 
 SceneNode::~SceneNode()
@@ -52,6 +64,15 @@ bool SceneNode::DetachChild(SceneNode* theChild)
 	return false;
 }
 
+bool SceneNode::DetachChild(const int& ID)
+{
+	SceneNode* tempNode = SceneGraph::GetInstance()->GetNode(ID);
+	if (tempNode) {
+		DetachChild(tempNode);
+		return true;
+	} return false;
+}
+
 bool SceneNode::AddParent(SceneNode* theParent)
 {
 	// If there is a parent, return false
@@ -73,6 +94,7 @@ bool SceneNode::AddChild(SceneNode* theChild)
 	}
 	// Adds the child into list of child nodes
 	childNodes.push_back(theChild);
+	theChild->AddParent(this);
 	return true;
 }
 
@@ -120,6 +142,15 @@ bool SceneNode::DeleteChild(SceneNode* theChild)
 	return false;
 }
 
+bool SceneNode::DeleteChild(const int& ID)
+{
+	SceneNode* tempNode = SceneGraph::GetInstance()->GetNode(ID);
+	if (tempNode) {
+		DeleteChild(tempNode); 
+		return true;
+	} return false;
+}
+
 bool SceneNode::DeleteAllChildren()
 {
 	// Iterate through the list of child Nodes
@@ -146,17 +177,42 @@ void SceneNode::Render(void)
 {
 	MS& modelStack = GraphicsManager::GetInstance()->GetModelStack();
 	modelStack.PushMatrix();
-
 	modelStack.MultMatrix(this->GetTransformMatrix());
-	// Render the entity
-	Render();
-
+	RenderHelper::RenderMesh(nodeMesh);
 	// Render the children
 	list<SceneNode*>::iterator it;
 	for (it = childNodes.begin(); it != childNodes.end(); ++it)
 	{
 		(*it)->Render();
 	}
-
 	modelStack.PopMatrix();
+}
+
+SceneNode* SceneNode::GetNode(const int& ID)
+{
+	if (this->ID == ID) {
+		return this;
+	}
+
+	for (list<SceneNode*>::iterator lt = childNodes.begin(); lt != childNodes.end(); ++lt) {
+		GetNode(ID);
+	}
+	return nullptr;
+}
+
+SceneNode* Create::Node(const std::string& _meshName,
+	const Vector3& _position,
+	const Vector3& _scale)
+{
+	Mesh* modelMesh = MeshBuilder::GetInstance()->GetMesh(_meshName);
+	if (modelMesh == nullptr)
+		return nullptr;
+
+	SceneNode* result = new SceneNode(modelMesh);
+	result->SetCollider(false);
+	result->SetTranslate(_position);
+	result->SetScale(_scale);
+	EntityManager::GetInstance()->AddEntity(result);
+
+	return result;
 }

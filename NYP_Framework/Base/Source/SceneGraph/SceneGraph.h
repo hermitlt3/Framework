@@ -19,13 +19,12 @@ public:
 	}
 
 	SceneNode* GetNode(const int& ID);
-	SceneNode* GetNode(EntityBase* theEntity);
 
 	bool AddNode(SceneNode* node);
-	bool AddNode(EntityBase* theEntity);
-
-	bool DeleteNode(EntityBase* theEntity);
 	bool DeleteNode(const int& ID);
+	bool DetachNode(const int& ID);
+
+	void GenerateID(SceneNode* node);
 
 protected:
 private:

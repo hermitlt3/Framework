@@ -13,6 +13,8 @@ class ShaderProgram;
 class SceneManager;
 class TextEntity;
 class Light;
+class SceneNode;
+
 class SceneText : public Scene
 {	
 public:
