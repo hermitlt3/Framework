@@ -7,10 +7,13 @@ public:
 	SceneNode();
 	~SceneNode();
 
+	int GetID();
+	void SetID(const int& _ID);
+
 protected:
 
 private:
-
+	int ID;
 };
 
 #endif
