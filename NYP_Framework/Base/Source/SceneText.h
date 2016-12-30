@@ -3,7 +3,6 @@
 
 #include "Scene.h"
 #include "Mtx44.h"
-#include "PlayerInfo/PlayerInfo.h"
 #include "GroundEntity.h"
 #include "FPSCamera.h"
 #include "Mesh.h"
@@ -29,7 +28,6 @@ private:
 	SceneText(SceneManager* _sceneMgr); // This is used to register to SceneManager
 
 	ShaderProgram* currProg;
-	CPlayerInfo* playerInfo;
 	GroundEntity* groundEntity;
 	FPSCamera camera;
 	TextEntity* textObj[3];
