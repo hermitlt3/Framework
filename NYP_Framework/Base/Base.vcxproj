@@ -36,8 +36,8 @@
     <ClInclude Include="Source\GroundEntity.h" />
     <ClInclude Include="Source\Light.h" />
     <ClInclude Include="Source\OBJMesh.h" />
-    <ClInclude Include="Source\SceneGraph.h" />
-    <ClInclude Include="Source\SceneNode.h" />
+    <ClInclude Include="Source\SceneGraph\SceneGraph.h" />
+    <ClInclude Include="Source\SceneGraph\SceneNode.h" />
     <ClInclude Include="Source\SceneText.h" />
     <ClInclude Include="Source\SkyBox\SkyBoxEntity.h" />
     <ClInclude Include="Source\SpriteEntity.h" />

@@ -104,14 +104,14 @@
     <ClInclude Include="Source\GenericEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneGraph.h">
-      <Filter>SceneGraph</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SceneNode.h">
-      <Filter>SceneGraph</Filter>
-    </ClInclude>
     <ClInclude Include="Source\CTransform.h">
       <Filter>Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneGraph\SceneGraph.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneGraph\SceneNode.h">
+      <Filter>SceneGraph</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
