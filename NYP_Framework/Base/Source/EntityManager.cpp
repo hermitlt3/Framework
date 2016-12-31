@@ -1,7 +1,6 @@
 #include "EntityManager.h"
 #include "EntityBase.h"
 #include "Collider/Collider.h"
-
 #include <iostream>
 using namespace std;
 
@@ -42,6 +41,7 @@ void EntityManager::Render()
 	end = entityList.end();
 	for (it = entityList.begin(); it != end; ++it)
 	{
+		std::cout << (*it)->GetLocalTranslate() << std::endl;
 		(*it)->Render();
 	}
 }

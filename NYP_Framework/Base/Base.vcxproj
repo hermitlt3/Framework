@@ -19,8 +19,8 @@
     <ClCompile Include="Source\Light.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\OBJMesh.cpp" />
-    <ClCompile Include="Source\SceneGraph.cpp" />
-    <ClCompile Include="Source\SceneNode.cpp" />
+    <ClCompile Include="Source\SceneGraph\SceneGraph.cpp" />
+    <ClCompile Include="Source\SceneGraph\SceneNode.cpp" />
     <ClCompile Include="Source\SceneText.cpp" />
     <ClCompile Include="Source\SpriteEntity.cpp" />
     <ClCompile Include="Source\TextEntity.cpp" />

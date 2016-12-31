@@ -66,7 +66,7 @@ public:
 	inline Vector3 GetScale() const {
 		return Vector3(t_Mtx.a[0], t_Mtx.a[5], t_Mtx.a[10]);
 	};
-	inline Mtx44 GetTransformMatrix() const { 
+	inline Mtx44& GetTransformMatrix() { 
 		return t_Mtx; 
 	};
 

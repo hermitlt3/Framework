@@ -16,6 +16,9 @@
     <Filter Include="SceneGraph">
       <UniqueIdentifier>{ef26c3e9-48ba-4d35-8ef9-c759feb0ca2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Spatial Partition">
+      <UniqueIdentifier>{7402d48c-ee5e-4e15-bcd7-ce8ae05e5386}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Application.cpp">
@@ -51,10 +54,10 @@
     <ClCompile Include="Source\GenericEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneGraph.cpp">
+    <ClCompile Include="Source\SceneGraph\SceneGraph.cpp">
       <Filter>SceneGraph</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneNode.cpp">
+    <ClCompile Include="Source\SceneGraph\SceneNode.cpp">
       <Filter>SceneGraph</Filter>
     </ClCompile>
   </ItemGroup>

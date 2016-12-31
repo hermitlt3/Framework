@@ -49,6 +49,9 @@ public:
 
 	SceneNode* GetNode(const int& ID);
 
+	bool HasParent();
+
+	SceneNode* GetParent() { return parentNode; }
 protected:
 private:
 	SceneNode* parentNode;

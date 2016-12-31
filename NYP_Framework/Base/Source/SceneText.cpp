@@ -21,8 +21,8 @@
 #include "Light.h"
 #include "SkyBox/SkyBoxEntity.h"
 
-#include "SceneGraph\SceneGraph.h"
-#include "SceneGraph\SceneNode.h"
+#include "SceneGraph/SceneGraph.h"
+#include "SceneGraph/SceneNode.h"
 
 #include <iostream>
 using namespace std;
@@ -174,6 +174,10 @@ void SceneText::Init()
 
 	SceneNode *oneNode = Create::Node("cube", Vector3(5, 0, 0));
 	SceneGraph::GetInstance()->AddNode(oneNode);
+	SceneNode *twoNode = Create::Node("cube", Vector3(0, 0, 5));
+	oneNode->AddChild(twoNode);
+	SceneNode *threeNode = Create::Node("cube", Vector3(0, 5, 0));
+	twoNode->AddChild(threeNode);
 
 	// Setup the 2D entities
 	float halfWindowWidth = Application::GetInstance().GetWindowWidth() / 2.0f;
