@@ -2,6 +2,8 @@
 #include "EntityBase.h"
 #include "Collider/Collider.h"
 #include <iostream>
+#include "SceneGraph\SceneNode.h"
+#include "SceneGraph\SceneGraph.h"
 using namespace std;
 
 // Update all entities
@@ -41,9 +43,12 @@ void EntityManager::Render()
 	end = entityList.end();
 	for (it = entityList.begin(); it != end; ++it)
 	{
-		std::cout << (*it)->GetLocalTranslate() << std::endl;
+		SceneNode* node = dynamic_cast<SceneNode*>(*it);
+		if (node)
+			continue;
 		(*it)->Render();
 	}
+	SceneGraph::GetInstance()->GetInstance()->GetRoot()->Render();
 }
 
 // Render the UI entities

@@ -7,6 +7,7 @@
 
 SceneNode::SceneNode() :
 parentNode(nullptr),
+nodeMesh(nullptr),
 ID(-1)
 {
 	childNodes.clear();
@@ -95,11 +96,6 @@ bool SceneNode::AddChild(SceneNode* theChild)
 	// Adds the child into list of child nodes
 	childNodes.push_back(theChild);
 	theChild->AddParent(this);
-	theChild->SetTranslate(GetLocalTranslate().x, GetLocalTranslate().y, GetLocalTranslate().z);
-	theChild->SetRotate(GetRotate().y, 0, 1, 0);
-	theChild->SetRotate(GetRotate().x, 1, 0, 0);
-	theChild->SetRotate(GetRotate().z, 0, 0, 1);
-	theChild->SetScale(GetScale().x, GetScale().y, GetScale().z);
 	return true;
 }
 
@@ -182,12 +178,19 @@ void SceneNode::Render(void)
 {
 	MS& modelStack = GraphicsManager::GetInstance()->GetModelStack();
 	modelStack.PushMatrix();
-	modelStack.Translate(GetLocalTranslate().x, GetLocalTranslate().y, GetLocalTranslate().z);
-	modelStack.Rotate(GetRotate().y, 0, 1, 0);
-	modelStack.Rotate(GetRotate().x, 1, 0, 0);
-	modelStack.Rotate(GetRotate().z, 0, 0, 1);
-	modelStack.Scale(GetScale().x, GetScale().y, GetScale().z);
-	RenderHelper::RenderMesh(nodeMesh);
+	//modelStack.Translate(GetLocalTranslate().x, GetLocalTranslate().y, GetLocalTranslate().z);
+	//modelStack.Rotate(GetRotate().y, 0, 1, 0);
+	//modelStack.Rotate(GetRotate().x, 1, 0, 0);
+	//modelStack.Rotate(GetRotate().z, 0, 0, 1);
+	//modelStack.Scale(GetScale().x, GetScale().y, GetScale().z);
+	modelStack.MultMatrix(GetTransformMatrix());
+	if (nodeMesh)
+		RenderHelper::RenderMesh(nodeMesh);
+	list<SceneNode*>::iterator it;
+	for (it = childNodes.begin(); it != childNodes.end(); ++it)
+	{
+		(*it)->Render();
+	}
 	modelStack.PopMatrix();
 }
 

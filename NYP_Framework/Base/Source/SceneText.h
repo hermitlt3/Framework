@@ -36,6 +36,7 @@ private:
 	Light* lights[2];
 
 	GenericEntity* theCube;
+	SceneNode* node[3];
 
 	static SceneText* sInstance; // The pointer to the object that gets registered
 };

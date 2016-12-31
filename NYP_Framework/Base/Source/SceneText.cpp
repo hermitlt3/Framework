@@ -172,12 +172,12 @@ void SceneText::Init()
 	groundEntity->SetScale(Vector3(100.0f, 100.0f, 100.0f));
 	groundEntity->SetGrids(Vector3(10.0f, 1.0f, 10.0f));
 
-	SceneNode *oneNode = Create::Node("cube", Vector3(5, 0, 0));
-	SceneGraph::GetInstance()->AddNode(oneNode);
-	SceneNode *twoNode = Create::Node("cube", Vector3(0, 0, 5));
-	oneNode->AddChild(twoNode);
-	SceneNode *threeNode = Create::Node("cube", Vector3(0, 5, 0));
-	twoNode->AddChild(threeNode);
+	node[0] = Create::Node("cube", Vector3(5, 0, 0));
+	SceneGraph::GetInstance()->AddNode(node[0]);
+	node[1] = Create::Node("cube", Vector3(0, 0, 5), Vector3(0.5f, 0.5f, 0.5f));
+	node[0]->AddChild(node[1]);
+	node[2] = Create::Node("cube", Vector3(0, 5, 0));
+	node[1]->AddChild(node[2]);
 
 	// Setup the 2D entities
 	float halfWindowWidth = Application::GetInstance().GetWindowWidth() / 2.0f;
@@ -264,17 +264,9 @@ void SceneText::Update(double dt)
 
 	// Update the 2 text object values. NOTE: Can do this in their own class but i'm lazy to do it now :P
 	// Eg. FPSRenderEntity or inside RenderUI for LightEntity
-	std::ostringstream ss;
-	ss.precision(5);
-	float fps = (float)(1.f / dt);
-	ss << "FPS: " << fps;
-	textObj[1]->SetText(ss.str());
+	node[0]->SetTranslate(dt, 0, 0);
+	node[1]->SetRotate(30.f * dt, 0, 1, 0);
 
-	// Update the player position into textObj[2]
-	std::ostringstream ss1;
-	ss1.precision(4);
-	ss1 << "Player:";
-	textObj[2]->SetText(ss1.str());
 }
 
 void SceneText::Render()

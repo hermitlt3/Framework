@@ -2,6 +2,7 @@
 #define SCENE_GRAPH_H
 
 #include "SingletonTemplate.h"
+#include "Transform\CTransform.h"
 
 class SceneNode;
 class EntityBase;
@@ -25,6 +26,8 @@ public:
 	bool DetachNode(const int& ID);
 
 	void GenerateID(SceneNode* node);
+
+	CTransform* GetNodeLocalTransform(SceneNode* node) const;
 
 protected:
 private:
