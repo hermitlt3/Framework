@@ -60,6 +60,9 @@
     <ClCompile Include="Source\SceneGraph\SceneNode.cpp">
       <Filter>SceneGraph</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SpatialPartition.cpp">
+      <Filter>Spatial Partition</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="Source\SceneGraph\SceneNode.h">
       <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SpatialPartition.h">
+      <Filter>Spatial Partition</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
