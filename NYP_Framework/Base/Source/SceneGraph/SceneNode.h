@@ -2,11 +2,12 @@
 #define SCENE_NODE_H
 
 #include "EntityBase.h"
+#include "Collider\Collider.h"
 #include <list>
 using std::list;
 
 class Mesh;
-class SceneNode : public EntityBase
+class SceneNode : public EntityBase, public CCollider
 {
 public:
 	SceneNode();

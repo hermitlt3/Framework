@@ -27,6 +27,8 @@ public:
 	void Add(EntityBase* entity);
 	// Remove entity from octree node
 	EntityBase* Remove(EntityBase* entity);
+	// Divides the octree into eight child nodes
+	bool DivideOctree();
 
 protected:
 	// Mainly scale and translate of the octree nodes
@@ -37,7 +39,11 @@ protected:
 	Octree* parent;
 
 private:
-	const float MIN_SCALE = 1.f;
+	// Limit for octree division
+	const float MAX_DEPTH = 4;
+	// Ratio for each node to scale to overlap
+	float PERCENT_SCALE;
+	// Counter for how many times tree divided
 	int depth;
 };
 

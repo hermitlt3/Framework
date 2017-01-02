@@ -176,8 +176,12 @@ void SceneText::Init()
 	SceneGraph::GetInstance()->AddNode(node[0]);
 	node[1] = Create::Node("cube", Vector3(0, 0, 5), Vector3(0.5f, 0.5f, 0.5f));
 	node[0]->AddChild(node[1]);
-	node[2] = Create::Node("cube", Vector3(0, 5, 0));
+	node[2] = Create::Node("cube", Vector3(15, 0, 0));
 	node[1]->AddChild(node[2]);
+
+	node[0]->SetAABB(Vector3(0.5f, 0.5f, 0.5f), Vector3(-0.5f, -0.5f, -0.5f));
+	node[1]->SetAABB(Vector3(0.25f, 0.25f, 0.25f), Vector3(-0.25f, -0.25f, -0.25f));
+	node[2]->SetAABB(Vector3(0.5f, 0.5f, 0.5f), Vector3(-0.5f, -0.5f, -0.5f));
 
 	// Setup the 2D entities
 	float halfWindowWidth = Application::GetInstance().GetWindowWidth() / 2.0f;
