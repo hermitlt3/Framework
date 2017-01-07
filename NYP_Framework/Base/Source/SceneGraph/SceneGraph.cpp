@@ -54,7 +54,7 @@ CTransform* SceneGraph::GetNodeLocalTransform(SceneNode* node) const
 {
 	SceneNode* curr = node;
 	CTransform* results = new CTransform();
-
+	
 	// Transverse backwards from node to root
 	while (curr != theRoot) {
 		results->GetTransformMatrix() = results->GetTransformMatrix() * curr->GetTransformMatrix();

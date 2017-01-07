@@ -58,5 +58,5 @@ EntityBase* Octree::Remove(EntityBase* entity)
 
 bool Octree::DivideOctree()
 {
-
+	return false;
 }

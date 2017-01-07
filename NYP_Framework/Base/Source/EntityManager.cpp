@@ -44,7 +44,7 @@ void EntityManager::Render()
 	for (it = entityList.begin(); it != end; ++it)
 	{
 		SceneNode* node = dynamic_cast<SceneNode*>(*it);
-		if (node)
+		if (node && node != SceneGraph::GetInstance()->GetRoot())
 			continue;
 		(*it)->Render();
 	}

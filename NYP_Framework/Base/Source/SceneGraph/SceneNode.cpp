@@ -24,13 +24,14 @@ ID(-1)
 SceneNode::~SceneNode()
 {
 	// Iterate through the list of child Nodes
-	for (list<SceneNode*>::iterator lt; lt != childNodes.end(); ++lt) {
-		// Deallocate memory 
-		delete (*lt);
-		(*lt) = nullptr;
-	}
+	//for (list<SceneNode*>::iterator lt; lt != childNodes.end(); ++lt) {
+	//	// Deallocate memory 
+	//	delete (*lt);
+	//	childNodes.erase(lt);
+	//	//(*lt) = nullptr;
+	//}
 	// Clear the list
-	childNodes.clear();
+	//childNodes.clear();
 }
 
 bool SceneNode::DetachParent()

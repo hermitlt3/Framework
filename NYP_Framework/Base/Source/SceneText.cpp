@@ -174,10 +174,11 @@ void SceneText::Init()
 
 	node[0] = Create::Node("cube", Vector3(5, 0, 0));
 	SceneGraph::GetInstance()->AddNode(node[0]);
-	node[1] = Create::Node("cube", Vector3(0, 0, 5), Vector3(0.5f, 0.5f, 0.5f));
+	node[1] = Create::Node("cube", Vector3(0, 0, 5), Vector3(1.f, 1.f, 1.f));
 	node[0]->AddChild(node[1]);
-	node[2] = Create::Node("cube", Vector3(15, 0, 0));
-	node[1]->AddChild(node[2]);
+	node[2] = Create::Node("cube", Vector3(10, 0, 0));
+	//node[1]->AddChild(node[2]);
+	SceneGraph::GetInstance()->AddNode(node[2]);
 
 	node[0]->SetAABB(Vector3(0.5f, 0.5f, 0.5f), Vector3(-0.5f, -0.5f, -0.5f));
 	node[1]->SetAABB(Vector3(0.25f, 0.25f, 0.25f), Vector3(-0.25f, -0.25f, -0.25f));
@@ -271,6 +272,25 @@ void SceneText::Update(double dt)
 	node[0]->SetTranslate(dt, 0, 0);
 	node[1]->SetRotate(30.f * dt, 0, 1, 0);
 
+	//std::cout << "0 pos: " << node[0]->GetLocalTranslate() << "... 1 pos: " << node[1]->GetLocalTranslate() << std::endl;
+	std::cout << SceneGraph::GetInstance()->GetNodeLocalTransform(node[0])->GetLocalTranslate() << ",,,"<<
+		SceneGraph::GetInstance()->GetNodeLocalTransform(node[1])->GetLocalTranslate() << "\n";
+	if (!node[0]->IsDone() && !node[2]->IsDone()){
+		if (node[0]->GetLocalTranslate().x + node[0]->GetMaxAABB().x > node[2]->GetLocalTranslate().x + node[2]->GetMinAABB().x &&
+			node[0]->GetLocalTranslate().x + node[0]->GetMinAABB().x < node[2]->GetLocalTranslate().x + node[2]->GetMaxAABB().x &&
+			node[0]->GetLocalTranslate().y + node[0]->GetMaxAABB().y > node[2]->GetLocalTranslate().y + node[2]->GetMinAABB().y &&
+			node[0]->GetLocalTranslate().y + node[0]->GetMinAABB().y < node[2]->GetLocalTranslate().y + node[2]->GetMaxAABB().y &&
+			node[0]->GetLocalTranslate().z + node[0]->GetMaxAABB().z > node[2]->GetLocalTranslate().z + node[2]->GetMinAABB().z &&
+			node[0]->GetLocalTranslate().z + node[0]->GetMinAABB().z < node[2]->GetLocalTranslate().z + node[2]->GetMaxAABB().z)
+		{
+
+			//node[0]->SetIsDone(true);
+			//node[2]->SetIsDone(true);
+			//SceneGraph::GetInstance()->DeleteNode(node[0]->GetID());
+			//SceneGraph::GetInstance()->DeleteNode(node[2]->GetID());
+		}
+	}
+	//std::cout << node[0]->GetID() << "," << node[1]->GetID() << "," << node[2]->GetID() << "\n";
 }
 
 void SceneText::Render()

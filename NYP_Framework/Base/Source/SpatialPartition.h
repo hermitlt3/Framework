@@ -20,6 +20,9 @@ public:
 
 	// Get the parent node
 	inline Octree* GetParent() { return parent; };
+	// Set the parent node
+	bool SetParent(const Octree* _parent);
+	
 	// Get the smallest node from position
 	Octree* GetNodeFromPos(const Vector3& pos);
 
